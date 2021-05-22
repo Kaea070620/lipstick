@@ -1,5 +1,9 @@
+noseX=0;
+noseY=0;
 
-
+function preload(){
+lipstick=loadImage('https://i.postimg.cc/VvzNFXpk/LIPSTICK-removebg-preview.png')
+}
 function setup(){
     canvas=createCanvas(300,300)
     canvas.center();
@@ -12,6 +16,7 @@ function setup(){
 }
 function draw(){
 image(video,0,0,300,300)
+image(lipstick,noseX-15,noseY+10,30,30)
 }
 function take_snapshot(){
     save('myFIlterImage.png');
@@ -24,6 +29,8 @@ function gotPoses(results)
     if(results.length > 0)
     {
         console.log(results)
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
         console.log("nose x="+ results[0].pose.nose.x)
         console.log("nose y="+ results[0].pose.nose.y)
     }
